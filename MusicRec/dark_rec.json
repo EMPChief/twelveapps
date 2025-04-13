@@ -1,0 +1,122 @@
+{
+  "rock": [
+    "Arctic Monkeys - Do I Wanna Know?",
+    "Muse - Uprising",
+    "The Killers - Mr. Brightside",
+    "Kings of Leon - Use Somebody",
+    "The White Stripes - Seven Nation Army",
+    "Red Hot Chili Peppers - Californication",
+    "Radiohead - Creep",
+    "Paramore - Misery Business",
+    "The Strokes - Reptilia",
+    "Green Day - Boulevard of Broken Dreams"
+  ],
+  "pop": [
+    "Olivia Rodrigo - vampire",
+    "Charli XCX - Boom Clap",
+    "Lady Gaga - Stupid Love",
+    "Harry Styles - As It Was",
+    "Adele - Rolling in the Deep",
+    "Lorde - Royals",
+    "Doja Cat - Say So",
+    "Carly Rae Jepsen - Call Me Maybe",
+    "Bebe Rexha - I'm a Mess",
+    "Troye Sivan - Youth"
+  ],
+  "jazz": [
+    "Esperanza Spalding - I Know You Know",
+    "Nina Simone - Feeling Good",
+    "Norah Jones - Don't Know Why",
+    "Jamie Cullum - These Are The Days",
+    "Gregory Porter - Liquid Spirit",
+    "Snarky Puppy - What About Me?",
+    "Kamasi Washington - Truth",
+    "Madeleine Peyroux - Dance Me to the End of Love",
+    "Melody Gardot - Baby I'm a Fool",
+    "Hiromi Uehara - Return of Kung-Fu World Champion"
+  ],
+  "classical": [
+    "Max Richter - On the Nature of Daylight",
+    "Philip Glass - Opening",
+    "Hans Zimmer - Time (Inception)",
+    "Yiruma - River Flows in You",
+    "Eric Whitacre - Lux Aurumque",
+    "Arvo Pärt - Spiegel im Spiegel",
+    "Einaudi - Nuvole Bianche",
+    "John Williams - Hedwig's Theme",
+    "Ramin Djawadi - Light of the Seven",
+    "Howard Shore - Concerning Hobbits"
+  ],
+  "hip-hop": [
+    "Tyler, The Creator - EARFQUAKE",
+    "Childish Gambino - This Is America",
+    "Travis Scott - SICKO MODE",
+    "Cardi B - Bodak Yellow",
+    "A$AP Rocky - L$D",
+    "Nicki Minaj - Chun-Li",
+    "Lil Nas X - INDUSTRY BABY",
+    "BROCKHAMPTON - SUGAR",
+    "Post Malone - White Iverson",
+    "21 Savage - a lot"
+  ],
+  "country": [
+    "Kacey Musgraves - Rainbow",
+    "Zach Bryan - Something in the Orange",
+    "Morgan Wallen - Sand In My Boots",
+    "Maren Morris - The Bones",
+    "Ashley McBryde - One Night Standards",
+    "Tyler Childers - Feathered Indians",
+    "Lainey Wilson - Heart Like a Truck",
+    "Eric Church - Springsteen",
+    "Old Dominion - Hotel Key",
+    "Thomas Rhett - Die a Happy Man"
+  ],
+  "electronic": [
+    "ODESZA - A Moment Apart",
+    "Flume - Never Be Like You",
+    "Madeon - All My Friends",
+    "Illenium - Good Things Fall Apart",
+    "Louis The Child - Better Not",
+    "Kavinsky - Nightcall",
+    "Porter Robinson - Shelter",
+    "SG Lewis - Chemicals",
+    "Virtual Self - Ghost Voices",
+    "Petit Biscuit - Sunset Lover"
+  ],
+  "reggae": [
+    "Stick Figure - Sound of the Sea",
+    "SOJA - True Love",
+    "Rebelution - Safe and Sound",
+    "Collie Buddz - Love & Reggae",
+    "J Boog - Let's Do It Again",
+    "Alborosie - Herbalist",
+    "Matisyahu - King Without a Crown",
+    "Gentleman - Superior",
+    "Koffee - Toast",
+    "Etana - Roots"
+  ],
+  "metal": [
+    "Gojira - Stranded",
+    "Trivium - In Waves",
+    "Architects - Doomsday",
+    "Bring Me The Horizon - Shadow Moses",
+    "Ghost - Square Hammer",
+    "Avenged Sevenfold - Hail to the King",
+    "Mastodon - Blood and Thunder",
+    "Parkway Drive - Vice Grip",
+    "Sabaton - The Last Stand",
+    "Motionless In White - Another Life"
+  ],
+  "r&b": [
+    "Daniel Caesar - Get You",
+    "Giveon - Heartbreak Anniversary",
+    "Summer Walker - Playing Games",
+    "Brent Faiyaz - Dead Man Walking",
+    "Chloe x Halle - Do It",
+    "Jazmine Sullivan - Pick Up Your Feelings",
+    "Tinashe - 2 On",
+    "Frank Ocean - Pink + White",
+    "Khalid - Talk",
+    "Victoria Monét - On My Mama"
+  ]
+}
