@@ -10,10 +10,7 @@ while True:
 
     # Print the name in reverse
     print("Reversed name:")
-    reversed_name = ""
-    for i in range(len(name) - 1, -1, -1):
-        reversed_name += name[i]
-    print(reversed_name.title())
+    print(name[::-1].title())
 
     print("Your name is now reversed! 🎉")
     another = input(
