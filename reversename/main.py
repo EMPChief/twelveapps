@@ -2,6 +2,10 @@ print("🎉 Reversing your name! 🎉")
 
 while True:
     name = input("Enter your name: ")
+    if not name:
+        print("You must enter a valid name. It may be the only thing that can save you.")
+        continue
+    
 
     # Print the name normally
     for i in range(len(name)):

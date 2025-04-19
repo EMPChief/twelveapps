@@ -3,6 +3,9 @@ print("Speak your name... so we may twist it backwards into the void.")
 
 while True:
     name = input("👁️ Enter your name (it may never be the same): ")
+    
+    if not name:
+        print("🚫 You must enter a valid name. It may be the only thing that can save you.")
 
     # Echo their name for the last time
     print("\n 🔊 Your name, as it was once spoken:")
