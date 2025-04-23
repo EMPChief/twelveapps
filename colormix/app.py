@@ -25,13 +25,17 @@ while True:
         color1 = input("\n🎨 Enter the first color: ").lower()
         color2 = input("🎨 Enter the second color: ").lower()
 
-        key = f"{color1},{color2}"
+        key1 = f"{color1},{color2}"
+        key2 = f"{color2},{color1}"
 
-        if key not in colors:
+        if key1 in colors:
+            mix = colors[key1]
+        elif key2 in colors:
+            mix = colors[key2]
+        else:
             print("❌ Invalid color combination. Maybe you should stop trying to force things that don’t work. Try again.")
             continue
 
-        mix = colors[key]
         print(
             f"🎨 The mixed color is: {mix}. It's not going to fix your problems, but it's something to look at.")
     except Exception as e:
