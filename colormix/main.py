@@ -22,8 +22,8 @@ colors = load_colors()
 
 while True:
     try:
-        color1 = input("\n🎨 Enter the first color: ").lower()
-        color2 = input("🎨 Enter the second color: ").lower()
+        color1 = input("\n🎨 Enter the first color: ").lower().strip()
+        color2 = input("🎨 Enter the second color: ").lower().strip()
 
         key1 = f"{color1},{color2}"
         key2 = f"{color2},{color1}"
