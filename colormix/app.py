@@ -1,10 +1,10 @@
-import random
 import json
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
 
 print("=== 🎨 Welcome to the Color Mixer, where even your creativity might be as messed up as your life choices. 🎨 ===")
+
 
 def load_colors():
     try:
