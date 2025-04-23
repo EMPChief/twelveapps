@@ -43,7 +43,7 @@ while True:
         print("❌ Invalid input. Exiting the game.")
         break
 
-
+# Final summary
 print("\n=== 🧾 Game Summary ===")
 print(f"📊 Total guesses: {total_guesses}")
 print(f"✅ Correct guesses: {correct_guesses}")
