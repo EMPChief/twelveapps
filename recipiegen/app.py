@@ -56,14 +56,30 @@ while True:
         f"🍽️ Dish Name:  '{dark_1} {random_protein}' over '{dark_2} {random_carb}' with a {random_flavor} twist")
     print("🔪 Cook fast. The voices don’t like to wait...")
 
-    restart = input(
-        "\n🔁 Dare to roll the culinary dice again? (yes/no): ").lower()
-    if restart.startswith('n'):
+    restart_input = input(
+        "\n🔁 Dare to roll the culinary dice again? (yes/no/leave): ").lower()
+
+    if restart_input.startswith('n'):
         print("\n🎬 The curtain falls. Your apron is stained. Not with sauce.")
         time.sleep(1)
         print("🩸 As you leave the kitchen, something whispers... 'See you at dinner.'")
         time.sleep(1)
         print("🔕 But no one else heard it. Not this time.")
+        break
+    elif restart_input.startswith('l'):
+        print("\n🖤 You attempt to leave... but the door doesn’t open. No exit.")
+        time.sleep(1)
+        print("🪶 The walls whisper, 'You cannot leave... not yet.'")
+        time.sleep(1)
+    elif restart_input.startswith('y'):
+        if random.random() > 0.7:
+            print("\n🔮 You hear a faint voice say, 'This meal... will be your last.'")
+            time.sleep(1)
+        print("\n🔁 The roulette spins once more...")
+    else:
+        print("❌ Invalid response. It seems the game has no place for uncertainty.")
+        time.sleep(1)
+        print("🕳️ The darkness swallows your hesitation.")
         break
 
 print("\n🕯️ Last Meal Roulette has ended. For you, at least.")
