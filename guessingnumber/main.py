@@ -12,7 +12,12 @@ while True:
     start_time = time.time()
 
     for attempt in range(10):
-        guess_number = int(input(f"Attempt {attempt + 1}: Enter your guess: "))
+        try:
+            guess_number = int(input(f"Attempt {attempt + 1}: Enter your guess: "))
+        except ValueError:
+            print("⚠️ Invalid input! Please enter a number.")
+            continue
+        
         attempts += 1
         if guess_number < get_random:
             print("📉 Too low! Try again.")
