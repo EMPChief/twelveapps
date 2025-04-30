@@ -1,7 +1,7 @@
 import time
 import random
 
-print("🎯 Welcome to the Mafia-Themed Word Game 🎯")
+print("🎯 Related Word Game 🎯")
 
 # Mafia-themed words
 related_words = {
@@ -59,11 +59,13 @@ while True:
 
         # Exit condition
         if guess_word == "exit":
-            print("\nYou ain't got the guts to keep going? Alright, I see how it is. Goodbye!")
+            print(
+                "\nYou ain't got the guts to keep going? Alright, I see how it is. Goodbye!")
             break
 
         # Check the user's guess
-        normalized_related = [word.lower() for word in related_words[random_word]]
+        normalized_related = [word.lower()
+                              for word in related_words[random_word]]
         if guess_word in normalized_related:
             finished_seconds = time.time()
             time_taken = finished_seconds - start_seconds
@@ -74,7 +76,8 @@ while True:
             # Mafia-style scoring based on response time
             if time_taken < 2:
                 points += 5
-                print("🔥 That’s how a real made man handles business! You earned 5 points.")
+                print(
+                    "🔥 That’s how a real made man handles business! You earned 5 points.")
             elif time_taken < 3:
                 points += 4
                 print("👍 Not bad, not bad at all. You earned 4 points.")
@@ -86,14 +89,17 @@ while True:
                 print("😐 I’m not impressed, but here’s 2 points. Don’t waste my time.")
             elif time_taken < 10:
                 points += 1
-                print("😅 You’re barely getting by. 1 point, but don’t make me regret it.")
+                print(
+                    "😅 You’re barely getting by. 1 point, but don’t make me regret it.")
             else:
                 print("🕓 You’ve just cost yourself a seat at the table. 0 points, kid.")
 
         else:
-            print(f"❌ Wrong guess, you got more chance of surviving a drive-by in the Bronx.")
+            print(
+                f"❌ Wrong guess, you got more chance of surviving a drive-by in the Bronx.")
 
-        print(f"🏆 Total points: {points} — Don’t make me count any more than this.")
+        print(
+            f"🏆 Total points: {points} — Don’t make me count any more than this.")
 
     except KeyboardInterrupt:
         print("\nOh, you wanna quit? That’s fine. We don’t take kindly to quitters... 👋")
@@ -103,7 +109,8 @@ while True:
         break
 
     # Mafia-style prompt to play again
-    restart = input("\nSo, you think you’ve had enough? You want another round? (yes/no): ").strip().lower()
+    restart = input(
+        "\nSo, you think you’ve had enough? You want another round? (yes/no): ").strip().lower()
     if restart.startswith("n"):
         print("\nAlright, alright... that’s it. Go take a seat somewhere. Goodbye.")
         print(f"🎯 Your total points: {points}")
