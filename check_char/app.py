@@ -12,5 +12,7 @@ elif input_string.isalnum():
     print(f"🧬 '{input_string}' is alphanumeric. A hybrid. A glitch in the matrix. 🧟")
 elif input_string.isspace():
     print(f"🌫️ You entered whitespace. Like your future if you keep doing this. ☁️")
+elif input_string.isprintable():
+    print(f"🧨 '{input_string}' is a printable character. Just like you. 🙂")
 else:
     print(f"☢️ '{input_string}' is a special character. Just like you… unstable and slightly concerning. 🧨")
