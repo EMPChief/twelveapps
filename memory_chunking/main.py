@@ -21,12 +21,20 @@ class MemoryChunkingGame:
         for chunk in self.chunks:
             spaced_chunk = ' '.join(chunk)
             print(spaced_chunk)
-        if self.chunk_size < 8:
+        if self.chunk_size < 5:
             time.sleep(5)
+        elif self.chunk_size < 7:
+            time.sleep(8)
+        elif self.chunk_size < 10:
+            time.sleep(10)
         elif self.chunk_size < 12:
-            time.sleep(7)
+            time.sleep(12)
+        elif self.chunk_size < 15:
+            time.sleep(13)
+        elif self.chunk_size < 20:
+            time.sleep(14)
         else:
-            time.sleep(9)
+            time.sleep(15)
 
     def clear_screen(self):
         """Clear the console screen"""
@@ -38,23 +46,27 @@ class MemoryChunkingGame:
 
     def play_game(self):
         """Main game loop"""
-        print("Memory Number Chunking Game")
-        while True:
-            self.clear_screen()
-            self.generate_chunks()
-            self.display_chunks()
-            self.clear_screen()
-            user_input = self.get_user_input()
+        print("Memory Number Chunking Game (Press Ctrl+C to exit)")
+        try:
+            while True:
+                self.clear_screen()
+                self.generate_chunks()
+                self.display_chunks()
+                self.clear_screen()
+                user_input = self.get_user_input()
 
-            if user_input == self.chunks[0]:
-                print("Correct!")
-                self.chunk_size += 1
-            else:
-                print(f"Incorrect! The correct number was: {self.chunks[0]}")
-                self.chunk_size = max(3, self.chunk_size - 1)
+                if user_input == self.chunks[0]:
+                    print("Correct!")
+                    self.chunk_size += 1
+                else:
+                    print(
+                        f"Incorrect! The correct number was: {self.chunks[0]}")
+                    self.chunk_size = max(3, self.chunk_size - 1)
 
-            print(f"Next number will have {self.chunk_size} digits.")
-            time.sleep(2)
+                print(f"Next number will have {self.chunk_size} digits.")
+                time.sleep(2)
+        except KeyboardInterrupt:
+            print("\nThanks for playing! Exiting...")
 
 
 if __name__ == "__main__":
