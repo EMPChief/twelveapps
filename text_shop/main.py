@@ -1,6 +1,7 @@
 class TextShop:
     def __init__(self):
-        self.shop = {
+        """Initialize the shop with a predefined inventory, starting money, and an empty purchase history."""
+        self.inventory = {
             "orange": {"price": 1.00, "quantity": 3},
             "lemon": {"price": 0.50, "quantity": 7},
             "lime": {"price": 0.50, "quantity": 207},
@@ -10,71 +11,81 @@ class TextShop:
             "fish": {"price": 2.00, "quantity": 501},
             "tuna": {"price": 2.00, "quantity": 501}
         }
-        self.money = 299.17
-        self.user_buy = []
+        self.balance = 299.17
+        self.purchase_history = []
 
     def display_inventory(self):
+        """Display the current inventory and available balance."""
         print("\n" + "=" * 40)
         print("🛒 Inventory".center(40))
         print("=" * 40)
-        for item, details in self.shop.items():
+        for item_name, item_details in self.inventory.items():
             print(
-                f"{item.title():<10} ${details['price']:<5.2f}  x{details['quantity']}")
+                f"{item_name.title():<10} ${item_details['price']:<5.2f}  x{item_details['quantity']}")
         print("-" * 40)
-        print(f"💰 Available Money: ${self.money:.2f}")
+        print(f"💰 Available Balance: ${self.balance:.2f}")
         print("=" * 40)
 
-    def buy_item(self, item, quantity):
-        if item not in self.shop:
+    def buy_item(self, item_name, quantity_to_buy):
+        """
+        Attempt to buy a specified quantity of an item.
+
+        Parameters:
+        - item_name (str): Name of the item to buy.
+        - quantity_to_buy (int): Number of units to purchase.
+        """
+        if item_name not in self.inventory:
             print("❌ Item not found.\n")
             return
 
-        if quantity > self.shop[item]["quantity"]:
+        if quantity_to_buy > self.inventory[item_name]["quantity"]:
             print("⚠️ Not enough in stock.\n")
             return
 
-        total_cost = self.shop[item]["price"] * quantity
-        if self.money >= total_cost:
-            self.money -= total_cost
-            self.shop[item]["quantity"] -= quantity
-            self.user_buy.append((item, quantity))
-            print(f"✅ Bought {quantity} x {item}.")
+        total_cost = self.inventory[item_name]["price"] * quantity_to_buy
+        if self.balance >= total_cost:
+            self.balance -= total_cost
+            self.inventory[item_name]["quantity"] -= quantity_to_buy
+            self.purchase_history.append((item_name, quantity_to_buy))
+            print(f"✅ Bought {quantity_to_buy} x {item_name}.")
         else:
-            print("❌ You don't have enough money to buy that.")
+            print("❌ You don't have enough balance to buy that.")
 
-        print(f"💰 You have ${self.money:.2f} left.\n")
+        print(f"💰 You have ${self.balance:.2f} left.\n")
 
-    def user_bought_so_far(self):
+    def view_purchase_history(self):
+        """Display the list of items the user has purchased so far."""
         print("\n📦 Items You've Bought So Far:")
-        if not self.user_buy:
+        if not self.purchase_history:
             print("You haven't bought anything yet.\n")
             return
-        totals = {}
-        for item, quantity in self.user_buy:
-            totals[item] = totals.get(item, 0) + quantity
-        for item, quantity in totals.items():
-            print(f"• {quantity} x {item}")
+        item_totals = {}
+        for item_name, quantity in self.purchase_history:
+            item_totals[item_name] = item_totals.get(item_name, 0) + quantity
+        for item_name, quantity in item_totals.items():
+            print(f"• {quantity} x {item_name}")
         print()
 
     def run_program(self):
+        """Run the shop program, allowing users to interact with the inventory."""
         try:
             while True:
                 self.display_inventory()
-                item = input(
+                item_name = input(
                     "What would you like to buy? (type 'exit' to quit, 'lis' to view purchases): ").lower().strip()
-                if item == "exit":
+                if item_name == "exit":
                     print("\n👋 Exiting shop. Thank you for visiting!\n")
                     break
-                if item == "lis":
-                    self.user_bought_so_far()
+                if item_name == "lis":
+                    self.view_purchase_history()
                     continue
-                if item not in self.shop:
+                if item_name not in self.inventory:
                     print("❌ Item not found. Try again.\n")
                     continue
                 try:
-                    quant = int(
-                        input(f"How many {item}s would you like to buy? ").strip())
-                    self.buy_item(item, quant)
+                    quantity_to_buy = int(
+                        input(f"How many {item_name}s would you like to buy? ").strip())
+                    self.buy_item(item_name, quantity_to_buy)
                 except ValueError:
                     print("❌ Please enter a valid number.\n")
         except KeyboardInterrupt:

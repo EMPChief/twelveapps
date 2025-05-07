@@ -1,5 +1,14 @@
 class GalacticMarket:
+    """
+    Welcome to the GalacticMarket™ — because survival should always come at a steep price.
+    You're a lone pilot with 299.17 credits and a shopping list of questionable morality.
+    """
+
     def __init__(self):
+        """
+        Initialize the cargo hold with pseudo-edible items and set the user's credit balance.
+        Because what's space commerce without inflation and a mild existential crisis?
+        """
         self.cargo_hold = {
             "oxygen_canister": {"price": 25.00, "quantity": 3},
             "hydration_gel": {"price": 5.00, "quantity": 7},
@@ -14,6 +23,10 @@ class GalacticMarket:
         self.acquired_loot = []
 
     def display_manifest(self):
+        """
+        Print the current contents of the cargo hold and remaining credits.
+        A transparent reminder of what you can’t afford and the weight of your choices.
+        """
         print("\n" + "=" * 50)
         print("🚀 CARGO MANIFEST - U.S.S. CAPITALISM 🚀".center(50))
         print("=" * 50)
@@ -25,6 +38,10 @@ class GalacticMarket:
         print("=" * 50)
 
     def acquire_item(self, item, quantity):
+        """
+        Attempt to buy an item from the cargo hold.
+        May fail if you’re broke, unlucky, or asking for too much — much like real life.
+        """
         if item not in self.cargo_hold:
             print("🤖 ERROR 404: That item has been erased from the timeline.\n")
             return
@@ -48,6 +65,10 @@ class GalacticMarket:
         print(f"📉 Remaining credits: {self.credits:.2f}\n")
 
     def review_loot(self):
+        """
+        Display a summary of what the user has bought so far.
+        A great way to reflect on your consumption before the void consumes you.
+        """
         print("\n📦 Acquired Cargo So Far:")
         if not self.acquired_loot:
             print("Nothing. Just like your dreams, hopes, and stable income.\n")
@@ -60,6 +81,10 @@ class GalacticMarket:
         print()
 
     def initiate_trade_protocol(self):
+        """
+        Main loop for galactic shopping.
+        You can purchase, view your loot, or exit and await the heat death of the universe.
+        """
         try:
             while True:
                 self.display_manifest()
@@ -90,6 +115,10 @@ class GalacticMarket:
 
 
 if __name__ == "__main__":
+    """
+    Initiate the GalacticMarket.
+    This is your last chance to shop before capitalism collapses under cosmic radiation.
+    """
     print("🪐 Welcome to the Galactic Market, pilot. Where dreams are sold... and sometimes refunded for store credit. 🪐")
     market = GalacticMarket()
     market.initiate_trade_protocol()
