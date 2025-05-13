@@ -67,6 +67,8 @@ class MemoryChunkingGame:
             delay = 3000
         elif self.chunk_size < 12:
             delay = 5000
+        elif self.chunk_size < 15:
+            delay = 6000
         else:
             delay = 7000
 
