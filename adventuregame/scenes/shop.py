@@ -1,8 +1,9 @@
 from utils.printing import typewriter_print
 from router import go_to_town, register_shop_function
-from player import player
+from player import player, health_gold_name
 
 def shop():
+    health_gold_name()
     shop_items = {
         "1": {"name": "Health Potion", "inventory": 71, "price": 10},
         "2": {"name": "Gold Bar", "inventory": 82, "price": 100},

@@ -1,3 +1,4 @@
+from utils.printing import typewriter_print
 player = {
     "name": "",
     "health": 100,
@@ -46,3 +47,8 @@ def discover_location(location):
     if location not in player["progress"]["locations_discovered"]:
         player["progress"]["locations_discovered"].append(location)
         return True
+    
+def health_gold_name():
+    typewriter_print("=======================================")
+    typewriter_print(f"Name: {player['name']} | Health: {player['health']} | Gold: {player['gold']}")
+    typewriter_print("=======================================")
