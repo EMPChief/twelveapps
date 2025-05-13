@@ -2,15 +2,23 @@ import time
 import sys
 import os
 
+
 def clear_screen():
     """Clears the console screen."""
     if sys.platform.startswith('win'):
-        _ = os.system('cls')
+        os.system('cls')
     else:
-        _ = os.system('clear')
+        os.system('clear')
 
-def typewriter_print(text, delay=0.05):
-    """Prints text one letter at a time with a delay."""
+
+def typewriter_print(text, delay=0.05, force_typewriter=False):
+    """Prints text one letter at a time with a delay unless dev mode is on."""
+    dev_mode = True
+
+    if dev_mode and not force_typewriter:
+        print(text)
+        return
+
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)

@@ -7,7 +7,6 @@ from router import go_to_town
 import scenes.town
 import scenes.shop
 
-
 def main():
     typewriter_print("Welcome to the Space Adventure Game!")
     typewriter_print(
