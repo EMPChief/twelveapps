@@ -20,9 +20,11 @@ def main():
     clear_screen()
 
     player_name = input("Enter your name: ")
+    time.sleep(1)
+    clear_screen()
     set_player_name(player_name)
-
-    go_to_town()
+    while True:
+        go_to_town()
 
 
 if __name__ == "__main__":
