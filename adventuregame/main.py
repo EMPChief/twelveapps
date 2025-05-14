@@ -8,6 +8,7 @@ import scenes.town
 import scenes.shop
 import scenes.tavern
 
+
 def main():
     typewriter_print("Welcome to the Space Adventure Game!")
     typewriter_print(
