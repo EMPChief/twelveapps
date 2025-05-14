@@ -1,43 +1,41 @@
+"""Shop scene implementation."""
 from utils.printing import typewriter_print, clear_screen
 from router import go_to_town, register_shop_function
-from player import player, health_gold_name
+from player import player
+from scenes.shop_inventory import get_available_items
 import time
 import random
 
 def shop():
-    item_names = [
-        "Health Potion", "Gold Bar", "Space Suit", "Fuel", "Laser Gun",
-        "Teleportation Device", "Shield Generator", "Energy Drink", "Stamina Pills",
-        "Jetpack", "Anti-Gravity Boots", "Space Helmet", "Quantum Chip", "Warp Drive",
-        "Star Map", "Moon Rock", "Plasma Rifle", "Energy Shield", "Rocket Fuel",
-        "Ion Blaster", "Exosuit Upgrade"
-    ]
-    shop_items = {}
-    for i in range(1, 15):
-        name = random.choice(item_names)
-        price = random.randint(5, 150)
-        inventory = random.randint(5, 100)
-        shop_items[str(i)] = {
-            "name": name,
-            "inventory": inventory,
-            "price": price
-        }
-
+    """The shop scene where player can buy items."""
     while True:
-        health_gold_name()
+        player.display_status()
         typewriter_print(
             "Welcome to the Space Shop™ – where dreams go to die and wallets come to cry.")
         typewriter_print(
             "Yes, the prices are ridiculous. No, we don't take coupons. Or common sense.")
 
-        for key, item in shop_items.items():
+        # Get available items based on shop tier
+        available_items = get_available_items(player.get_shop_tier())
+        
+        # Create numbered menu of items
+        shop_menu = {}
+        for i, (name, item) in enumerate(available_items.items(), 1):
+            price = item["base_price"] * (1 + random.uniform(-0.1, 0.1))
+            inventory = random.randint(1, 5)
+            shop_menu[str(i)] = {
+                "name": name,
+                "price": int(price),
+                "inventory": inventory,
+                "description": item["description"]
+            }
             typewriter_print(
-                f"{key}. {item['name']} (Price: {item['price']} credits, In stock: {item['inventory']})"
+                f"{i}. {name} - {item['description']}\n   Price: {int(price)} credits, In stock: {inventory}"
             )
 
         try:
             choice = input(
-                "Pick an item number to buy, or 'q' to quit and spare yourself: ").strip()
+                "\nPick an item number to buy, or 'q' to quit and spare yourself: ").strip()
 
             if choice.lower() == 'q':
                 typewriter_print(
@@ -47,12 +45,12 @@ def shop():
                 go_to_town()
                 return
 
-            if choice not in shop_items:
+            if choice not in shop_menu:
                 typewriter_print(
-                    "Bold move picking an item that doesn’t exist. Try again, space cadet.")
+                    "Bold move picking an item that doesn't exist. Try again, space cadet.")
                 continue
 
-            item = shop_items[choice]
+            item = shop_menu[choice]
 
             try:
                 quantity = int(
@@ -72,15 +70,14 @@ def shop():
             if quantity > item["inventory"]:
                 typewriter_print(
                     f"Wow, ambitious. We only have {item['inventory']} in stock.")
-            elif player["gold"] < total_price:
+            elif player.gold < total_price:
                 typewriter_print(
                     "Not enough gold? Maybe go shake down some space pirates first.")
             else:
-                player["gold"] -= total_price
-                player["inventory"].extend([item["name"]] * quantity)
-                item["inventory"] -= quantity
+                player.gold -= total_price
+                player.inventory.extend([item["name"]] * quantity)
                 typewriter_print(
-                    f"Look at you, buying {quantity} x {item['name']} like it’s payday in the asteroid mines.")
+                    f"Look at you, buying {quantity} x {item['name']} like it's payday in the asteroid mines.")
                 time.sleep(1)
                 clear_screen()
 
@@ -91,6 +88,5 @@ def shop():
             clear_screen()
             go_to_town()
             return
-
 
 register_shop_function(shop)

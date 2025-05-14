@@ -1,0 +1,34 @@
+{
+    "derelict_station": {
+        "name": "Derelict Space Station",
+        "description": "Investigate an abandoned research station drifting in orbit. Strange energy readings detected.",
+        "min_level": 1,
+        "starting_scene": "airlock",
+        "completion_milestone": "station_explored",
+        "reward_id": "derelict_station_reward"
+    },
+    "asteroid_mines": {
+        "name": "Asteroid Mining Complex", 
+        "description": "Explore a defunct mining operation in the asteroid belt. Reports of automated defenses still active.",
+        "min_level": 2,
+        "starting_scene": "docking_bay",
+        "completion_milestone": "mines_secured",
+        "reward_id": "asteroid_mines_reward"
+    },
+    "quantum_anomaly": {
+        "name": "Quantum Anomaly",
+        "description": "Investigate a spatial anomaly causing strange temporal effects. High risk, high reward.",
+        "min_level": 3,
+        "starting_scene": "anomaly_entrance",
+        "completion_milestone": "anomaly_contained",
+        "reward_id": "quantum_anomaly_reward"
+    },
+    "alien_ruins": {
+        "name": "Ancient Alien Ruins",
+        "description": "Study mysterious ruins on a distant moon. Evidence of advanced civilization detected.",
+        "min_level": 4,
+        "starting_scene": "ruins_entrance",
+        "completion_milestone": "ruins_documented",
+        "reward_id": "alien_ruins_reward"
+    }
+} 

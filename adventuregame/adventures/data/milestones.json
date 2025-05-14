@@ -1,0 +1,26 @@
+{
+    "station_explored": {
+        "title": "Station Explorer",
+        "description": "Successfully investigated the derelict space station",
+        "experience_bonus": 100,
+        "unlocks": ["asteroid_mines"]
+    },
+    "mines_secured": {
+        "title": "Mine Sweeper",
+        "description": "Secured the abandoned asteroid mining complex",
+        "experience_bonus": 150,
+        "unlocks": ["quantum_anomaly"]
+    },
+    "anomaly_contained": {
+        "title": "Anomaly Handler",
+        "description": "Successfully contained the quantum anomaly",
+        "experience_bonus": 200,
+        "unlocks": ["alien_ruins"]
+    },
+    "ruins_documented": {
+        "title": "Xenoarchaeologist",
+        "description": "Documented the ancient alien ruins",
+        "experience_bonus": 250,
+        "unlocks": ["advanced_missions"]
+    }
+} 

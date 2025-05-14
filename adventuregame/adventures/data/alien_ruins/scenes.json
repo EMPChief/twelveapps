@@ -1,0 +1,182 @@
+{
+    "ruins_entrance": {
+        "description": "Ancient stone structures rise before you, covered in mysterious glyphs. A faint energy signature emanates from within.",
+        "choices": {
+            "1": {
+                "text": "Study entrance glyphs",
+                "reveals": "The glyphs appear to be a form of quantum-encoded language.",
+                "leads_to": "entrance_chamber"
+            },
+            "2": {
+                "text": "Scan for security systems",
+                "success_rate": 0.7,
+                "success": {
+                    "text": "Ancient defense grid detected and mapped.",
+                    "leads_to": "security_bypass"
+                },
+                "failure": {
+                    "text": "Security scan triggered defenses!",
+                    "damage": 30,
+                    "leads_to": "defense_activated"
+                }
+            },
+            "3": {
+                "text": "Search for alternate entrance",
+                "leads_to": "hidden_passage"
+            }
+        }
+    },
+    "entrance_chamber": {
+        "description": "The entrance chamber is filled with holographic displays and dormant machinery.",
+        "choices": {
+            "1": {
+                "text": "Activate translation matrix",
+                "requires_item": "Translation Matrix",
+                "leads_to": "translation_active"
+            },
+            "2": {
+                "text": "Examine machinery",
+                "success_rate": 0.6,
+                "success": {
+                    "text": "Machine activated successfully!",
+                    "loot": ["Alien Technology"],
+                    "leads_to": "central_chamber"
+                },
+                "failure": {
+                    "text": "Machine malfunction!",
+                    "damage": 25,
+                    "leads_to": "defense_activated"
+                }
+            }
+        }
+    },
+    "security_bypass": {
+        "description": "You've identified the security systems. They're still active but can be bypassed.",
+        "choices": {
+            "1": {
+                "text": "Hack security (requires Hacking Tool)",
+                "requires_item": "Hacking Tool",
+                "success_rate": 0.8,
+                "success": "central_chamber",
+                "failure": "defense_activated"
+            },
+            "2": {
+                "text": "Use discovered bypass",
+                "leads_to": "hidden_passage"
+            }
+        }
+    },
+    "hidden_passage": {
+        "description": "A narrow passage leads deeper into the ruins. Ancient markings cover the walls.",
+        "choices": {
+            "1": {
+                "text": "Follow passage",
+                "leads_to": "central_chamber"
+            },
+            "2": {
+                "text": "Study wall markings",
+                "reveals": "The markings detail the history of an advanced civilization.",
+                "loot": ["Ancient Scroll"],
+                "leads_to": "central_chamber"
+            }
+        }
+    },
+    "defense_activated": {
+        "description": "Ancient defense systems power up! Energy weapons target your position.",
+        "choices": {
+            "1": {
+                "text": "Take cover and analyze",
+                "success_rate": 0.5,
+                "success": "security_bypass",
+                "failure": {
+                    "text": "Hit by energy blast!",
+                    "damage": 40,
+                    "leads_to": "retreat_point"
+                }
+            },
+            "2": {
+                "text": "Run for hidden passage",
+                "leads_to": "hidden_passage"
+            }
+        }
+    },
+    "translation_active": {
+        "description": "The translation matrix decodes the alien language. Knowledge floods your systems.",
+        "choices": {
+            "1": {
+                "text": "Download ancient knowledge",
+                "bonus_xp": 50,
+                "leads_to": "central_chamber"
+            },
+            "2": {
+                "text": "Search for specific information",
+                "loot": ["Star Map", "Alien Artifact"],
+                "leads_to": "artifact_chamber"
+            }
+        }
+    },
+    "central_chamber": {
+        "description": "A vast chamber filled with advanced technology. A central console pulses with energy.",
+        "choices": {
+            "1": {
+                "text": "Access central console",
+                "requires_item": "Translation Matrix",
+                "success": "artifact_chamber",
+                "failure": "defense_activated"
+            },
+            "2": {
+                "text": "Study technology",
+                "success_rate": 0.7,
+                "success": {
+                    "text": "Technology successfully analyzed!",
+                    "bonus_xp": 40,
+                    "leads_to": "artifact_chamber"
+                },
+                "failure": {
+                    "text": "System overload!",
+                    "damage": 30,
+                    "leads_to": "retreat_point"
+                }
+            }
+        }
+    },
+    "artifact_chamber": {
+        "description": "The final chamber contains powerful alien artifacts and star maps.",
+        "choices": {
+            "1": {
+                "text": "Collect artifacts",
+                "loot": ["Alien Artifact", "Star Map"],
+                "leads_to": "mission_complete"
+            },
+            "2": {
+                "text": "Study star maps",
+                "reveals": "The maps show paths to other alien ruins!",
+                "bonus_xp": 30,
+                "leads_to": "mission_complete"
+            }
+        }
+    },
+    "retreat_point": {
+        "description": "You've been forced to retreat to a safer position.",
+        "choices": {
+            "1": {
+                "text": "Try different approach",
+                "leads_to": "entrance_chamber"
+            },
+            "2": {
+                "text": "Emergency evacuation",
+                "leads_to": "mission_failed"
+            }
+        }
+    },
+    "mission_complete": {
+        "description": "You've successfully explored the alien ruins and discovered incredible artifacts and knowledge!",
+        "final_scene": true,
+        "success": true
+    },
+    "mission_failed": {
+        "description": "Mission failed. The secrets of the ruins remain undiscovered.",
+        "final_scene": true,
+        "success": false
+    }
+} 

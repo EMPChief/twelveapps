@@ -1,0 +1,193 @@
+{
+    "airlock": {
+        "description": "You dock at the station's main airlock. Emergency lights flicker ominously.",
+        "choices": {
+            "1": {
+                "text": "Use emergency override (requires Hacking Tool)",
+                "requires_item": "Hacking Tool",
+                "success": "control_room",
+                "failure": "airlock_failure"
+            },
+            "2": {
+                "text": "Search for alternate entrance",
+                "leads_to": "maintenance_shaft"
+            },
+            "3": {
+                "text": "Analyze power readings",
+                "leads_to": "power_analysis"
+            }
+        }
+    },
+    "airlock_failure": {
+        "description": "The override fails, triggering security protocols! Electricity arcs through the airlock.",
+        "damage": 20,
+        "choices": {
+            "1": {
+                "text": "Retreat and try alternate entrance",
+                "leads_to": "maintenance_shaft"
+            },
+            "2": {
+                "text": "Force the door (risky)",
+                "success_rate": 0.4,
+                "success": "control_room",
+                "failure": "critical_failure",
+                "damage": 40
+            }
+        }
+    },
+    "maintenance_shaft": {
+        "description": "A narrow maintenance shaft leads into the station. It's tight but seems safe.",
+        "choices": {
+            "1": {
+                "text": "Crawl through shaft",
+                "leads_to": "storage_room"
+            },
+            "2": {
+                "text": "Check shaft for hazards first",
+                "reveals": "The shaft has some sharp edges but is passable.",
+                "leads_to": "storage_room",
+                "bonus": "avoid_damage"
+            }
+        }
+    },
+    "storage_room": {
+        "description": "You enter a storage room. Supplies are scattered everywhere.",
+        "choices": {
+            "1": {
+                "text": "Search for supplies",
+                "loot": ["Health Pack", "Plasma Cell"],
+                "leads_to": "central_corridor"
+            },
+            "2": {
+                "text": "Check computer terminal",
+                "reveals": "You find a station layout map.",
+                "leads_to": "central_corridor",
+                "bonus": "map_acquired"
+            },
+            "3": {
+                "text": "Continue to corridor",
+                "leads_to": "central_corridor"
+            }
+        }
+    },
+    "central_corridor": {
+        "description": "A long corridor stretches before you. Doors lead to various sections.",
+        "choices": {
+            "1": {
+                "text": "Head to Control Room",
+                "leads_to": "control_room"
+            },
+            "2": {
+                "text": "Investigate Lab",
+                "leads_to": "research_lab"
+            },
+            "3": {
+                "text": "Check Life Support",
+                "leads_to": "life_support"
+            }
+        }
+    },
+    "control_room": {
+        "description": "The station's control center. Most systems are offline.",
+        "choices": {
+            "1": {
+                "text": "Access main computer",
+                "requires_item": "Access Card",
+                "success": "mission_complete",
+                "failure": "control_room_lockout"
+            },
+            "2": {
+                "text": "Search for access card",
+                "leads_to": "research_lab"
+            },
+            "3": {
+                "text": "Try emergency protocols",
+                "success_rate": 0.5,
+                "success": "mission_complete",
+                "failure": "control_room_lockout"
+            }
+        }
+    },
+    "research_lab": {
+        "description": "The research lab is a mess of broken equipment and scattered data pads.",
+        "choices": {
+            "1": {
+                "text": "Search for research data",
+                "loot": ["Research Data", "Access Card"],
+                "leads_to": "central_corridor"
+            },
+            "2": {
+                "text": "Examine strange device",
+                "success_rate": 0.7,
+                "success": {
+                    "text": "You learn valuable information!",
+                    "bonus_xp": 25,
+                    "leads_to": "central_corridor"
+                },
+                "failure": {
+                    "text": "The device emits harmful radiation!",
+                    "damage": 15,
+                    "leads_to": "central_corridor"
+                }
+            }
+        }
+    },
+    "life_support": {
+        "description": "Life support systems are malfunctioning. The air feels thin.",
+        "choices": {
+            "1": {
+                "text": "Try to restore systems",
+                "success_rate": 0.6,
+                "success": {
+                    "text": "Systems restored! Air quality improving.",
+                    "heal": 20,
+                    "leads_to": "central_corridor"
+                },
+                "failure": {
+                    "text": "Systems critically failing! Air getting worse!",
+                    "damage": 10,
+                    "leads_to": "central_corridor"
+                }
+            },
+            "2": {
+                "text": "Search for emergency oxygen",
+                "loot": ["Emergency Oxygen"],
+                "leads_to": "central_corridor"
+            }
+        }
+    },
+    "control_room_lockout": {
+        "description": "Security lockout initiated! Alarms blaring!",
+        "choices": {
+            "1": {
+                "text": "Try to hack security",
+                "success_rate": 0.3,
+                "success": "mission_complete",
+                "failure": "retreat_and_retry"
+            },
+            "2": {
+                "text": "Retreat and find another way",
+                "leads_to": "central_corridor"
+            }
+        }
+    },
+    "critical_failure": {
+        "description": "Critical system failure! Emergency protocols activated!",
+        "choices": {
+            "1": {
+                "text": "Emergency evacuation",
+                "leads_to": "mission_failed"
+            }
+        }
+    },
+    "mission_complete": {
+        "description": "You've successfully accessed the station's main computer and retrieved vital data!",
+        "final_scene": true,
+        "success": true
+    },
+    "mission_failed": {
+        "description": "Mission failed. Emergency evacuation initiated.",
+        "final_scene": true,
+        "success": false
+    }
+} 

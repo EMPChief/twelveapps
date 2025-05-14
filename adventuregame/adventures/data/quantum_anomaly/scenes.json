@@ -1,0 +1,155 @@
+{
+    "anomaly_entrance": {
+        "description": "A shimmering spatial distortion hovers before you. Time seems to flow strangely here.",
+        "choices": {
+            "1": {
+                "text": "Scan the anomaly",
+                "reveals": "The anomaly appears to be a quantum temporal rift.",
+                "leads_to": "scan_results"
+            },
+            "2": {
+                "text": "Enter the anomaly directly",
+                "success_rate": 0.3,
+                "success": "time_chamber",
+                "failure": {
+                    "text": "Temporal backlash!",
+                    "damage": 40,
+                    "leads_to": "temporal_shock"
+                }
+            },
+            "3": {
+                "text": "Set up containment field",
+                "requires_item": "Quantum Stabilizer",
+                "leads_to": "containment_active"
+            }
+        }
+    },
+    "scan_results": {
+        "description": "Your scans reveal complex quantum patterns. The anomaly seems semi-stable.",
+        "choices": {
+            "1": {
+                "text": "Attempt stabilization",
+                "leads_to": "containment_attempt"
+            },
+            "2": {
+                "text": "Search for quantum fragments",
+                "loot": ["Time Shard"],
+                "leads_to": "time_chamber"
+            },
+            "3": {
+                "text": "Record anomaly data",
+                "loot": ["Anomaly Data"],
+                "leads_to": "research_decision"
+            }
+        }
+    },
+    "temporal_shock": {
+        "description": "The temporal energies overwhelm your systems. Reality flickers around you.",
+        "choices": {
+            "1": {
+                "text": "Try to stabilize (requires Quantum Stabilizer)",
+                "requires_item": "Quantum Stabilizer",
+                "success": "containment_active",
+                "failure": "mission_failed"
+            },
+            "2": {
+                "text": "Emergency temporal shield",
+                "success_rate": 0.6,
+                "success": "scan_results",
+                "failure": {
+                    "text": "Shield failure!",
+                    "damage": 30,
+                    "leads_to": "mission_failed"
+                }
+            }
+        }
+    },
+    "containment_attempt": {
+        "description": "You begin setting up quantum containment protocols.",
+        "choices": {
+            "1": {
+                "text": "Use Quantum Stabilizer",
+                "requires_item": "Quantum Stabilizer",
+                "leads_to": "containment_active"
+            },
+            "2": {
+                "text": "Manual containment",
+                "success_rate": 0.4,
+                "success": "containment_active",
+                "failure": {
+                    "text": "Containment field collapse!",
+                    "damage": 35,
+                    "leads_to": "temporal_shock"
+                }
+            }
+        }
+    },
+    "time_chamber": {
+        "description": "You find yourself in a chamber where time moves differently. Multiple temporal versions of objects exist simultaneously.",
+        "choices": {
+            "1": {
+                "text": "Collect time shards",
+                "loot": ["Time Shard", "Quantum Data"],
+                "leads_to": "research_decision"
+            },
+            "2": {
+                "text": "Study temporal mechanics",
+                "success_rate": 0.7,
+                "success": {
+                    "text": "Breakthrough in quantum understanding!",
+                    "bonus_xp": 40,
+                    "leads_to": "containment_attempt"
+                },
+                "failure": {
+                    "text": "Temporal feedback!",
+                    "damage": 25,
+                    "leads_to": "temporal_shock"
+                }
+            }
+        }
+    },
+    "research_decision": {
+        "description": "With new data in hand, you must decide how to proceed with the anomaly.",
+        "choices": {
+            "1": {
+                "text": "Attempt containment",
+                "leads_to": "containment_attempt"
+            },
+            "2": {
+                "text": "Further research",
+                "success_rate": 0.8,
+                "success": {
+                    "text": "Research breakthrough!",
+                    "bonus_xp": 30,
+                    "loot": ["Quantum Theory"],
+                    "leads_to": "containment_attempt"
+                },
+                "failure": "temporal_shock"
+            }
+        }
+    },
+    "containment_active": {
+        "description": "The quantum containment field stabilizes the anomaly. Temporal fluctuations decrease.",
+        "choices": {
+            "1": {
+                "text": "Complete containment",
+                "leads_to": "mission_complete"
+            },
+            "2": {
+                "text": "Extract final data",
+                "loot": ["Advanced Quantum Data"],
+                "leads_to": "mission_complete"
+            }
+        }
+    },
+    "mission_complete": {
+        "description": "The quantum anomaly is successfully contained and studied. Your research will advance temporal physics significantly!",
+        "final_scene": true,
+        "success": true
+    },
+    "mission_failed": {
+        "description": "Temporal containment failed. Emergency protocols initiated.",
+        "final_scene": true,
+        "success": false
+    }
+} 

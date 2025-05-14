@@ -7,7 +7,9 @@ from router import go_to_town
 import scenes.town
 import scenes.shop
 import scenes.tavern
-
+import scenes.spaceship
+import scenes.adventure
+import adventures.adventure_manager
 
 def main():
     typewriter_print("Welcome to the Space Adventure Game!")

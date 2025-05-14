@@ -1,0 +1,59 @@
+{
+    "Hacking Tool": {
+        "type": "tool",
+        "description": "Advanced hacking device for bypassing security systems",
+        "value": 100,
+        "usable": true,
+        "consumable": false
+    },
+    "Health Pack": {
+        "type": "consumable",
+        "description": "Restores 50 health points",
+        "value": 50,
+        "usable": true,
+        "consumable": true,
+        "effect": {
+            "type": "heal",
+            "amount": 50
+        }
+    },
+    "Plasma Cell": {
+        "type": "resource",
+        "description": "High-energy power source",
+        "value": 75,
+        "usable": false,
+        "consumable": true
+    },
+    "Emergency Oxygen": {
+        "type": "equipment",
+        "description": "Provides oxygen in hazardous environments",
+        "value": 150,
+        "usable": true,
+        "consumable": false,
+        "effect": {
+            "type": "protection",
+            "against": "suffocation"
+        }
+    },
+    "Access Card": {
+        "type": "key",
+        "description": "Security clearance card for restricted areas",
+        "value": 25,
+        "usable": true,
+        "consumable": false
+    },
+    "Research Data": {
+        "type": "quest_item",
+        "description": "Valuable scientific research information",
+        "value": 200,
+        "usable": false,
+        "consumable": false
+    },
+    "Emergency Beacon": {
+        "type": "tool",
+        "description": "Emergency distress signal device",
+        "value": 100,
+        "usable": true,
+        "consumable": false
+    }
+} 

@@ -1,30 +1,35 @@
+"""Tavern scene implementation."""
 from utils.printing import typewriter_print, clear_screen
 from router import go_to_town, register_tavern_function
-from player import player, health_gold_name, player_heal, player_damage, poison_damage
+from player import player
+from config import (
+    TAVERN_SLEEP_COST,
+    TAVERN_STEW_COST,
+    TAVERN_HEAL_AMOUNT,
+    TAVERN_POISON_DAMAGE,
+    TAVERN_POISON_DURATION
+)
 import time
 import random
 
 
 def tavern():
     """The tavern scene where player can rest, eat suspicious stew, or leave."""
-    STEW_COST = 10
-    SLEEP_COST = 50
-
     while True:
-        health_gold_name()
+        player.display_status()
         typewriter_print(
             "You enter the tavern. It's... cozy? Or is that just the smell?")
         typewriter_print(
-            f"1. Rest   - Get some sleep and heal (Cost: {SLEEP_COST} gold).")
+            f"1. Rest   - Get some sleep and heal (Cost: {TAVERN_SLEEP_COST} gold).")
         typewriter_print(
-            f"2. Eat    - Try the suspicious stew (Cost: {STEW_COST} gold).")
+            f"2. Eat    - Try the suspicious stew (Cost: {TAVERN_STEW_COST} gold).")
         typewriter_print("3. Leave  - Get out while you can.")
 
         try:
             choice = input("What would you like to do? (1/2/3): ")
 
             if choice == '1':
-                if player["gold"] < SLEEP_COST:
+                if player.gold < TAVERN_SLEEP_COST:
                     typewriter_print(
                         "You don't have enough gold to rest. Maybe you should've saved some?")
                     time.sleep(1)
@@ -32,13 +37,13 @@ def tavern():
                     continue
 
                 typewriter_print(
-                    "You decide to take a nap. Sweet dreams, but it’s gonna cost you.")
+                    "You decide to take a nap. Sweet dreams, but it's gonna cost you.")
                 time.sleep(1)
                 clear_screen()
 
-                player["gold"] -= SLEEP_COST
-                player_heal(20)
-                health_gold_name()
+                player.gold -= TAVERN_SLEEP_COST
+                player.heal(TAVERN_HEAL_AMOUNT)
+                player.display_status()
 
                 typewriter_print("You feel refreshed! Health restored.")
                 time.sleep(1)
@@ -47,7 +52,7 @@ def tavern():
                 break
 
             elif choice == '2':
-                if player["gold"] < STEW_COST:
+                if player.gold < TAVERN_STEW_COST:
                     typewriter_print(
                         "You don't have enough gold to try the suspicious stew. Maybe try again later?")
                     time.sleep(1)
@@ -56,29 +61,29 @@ def tavern():
 
                 typewriter_print(
                     "You eat the suspicious stew. It tastes... interesting.")
-                player["gold"] -= STEW_COST
+                player.gold -= TAVERN_STEW_COST
                 effect = random.choice(["poison", "damage", "heal", "nothing"])
                 time.sleep(1)
                 clear_screen()
 
                 if effect == "poison":
-                    survived = poison_damage(5, 3)
+                    survived = player.poison_damage(TAVERN_POISON_DAMAGE, TAVERN_POISON_DURATION)
                     if survived:
                         typewriter_print(
                             "That stew was laced with something! You barely survived.")
                 elif effect == "damage":
-                    player_damage(5)
+                    player.damage(TAVERN_POISON_DAMAGE)
                     typewriter_print(
                         "Your stomach churns... That stew did **not** sit well.")
                 elif effect == "heal":
-                    player_heal(10)
+                    player.heal(TAVERN_HEAL_AMOUNT // 2)  # Half the healing of sleeping
                     typewriter_print(
-                        "Weirdly, you feel energized! Maybe that stew wasn’t so bad after all.")
+                        "Weirdly, you feel energized! Maybe that stew wasn't so bad after all.")
                 else:
                     typewriter_print(
                         "You wait... but nothing happens. Just gas.")
 
-                health_gold_name()
+                player.display_status()
                 time.sleep(2)
                 clear_screen()
 

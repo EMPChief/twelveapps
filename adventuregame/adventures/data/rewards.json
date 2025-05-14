@@ -1,0 +1,22 @@
+{
+    "derelict_station_reward": {
+        "gold": 150,
+        "items": ["Emergency Beacon", "Plasma Cell", "Research Data"],
+        "experience": 50
+    },
+    "asteroid_mines_reward": {
+        "gold": 300,
+        "items": ["Rare Minerals", "Mining Laser", "Access Codes"],
+        "experience": 75
+    },
+    "quantum_anomaly_reward": {
+        "gold": 500,
+        "items": ["Quantum Stabilizer", "Time Shard", "Anomaly Data"],
+        "experience": 100
+    },
+    "alien_ruins_reward": {
+        "gold": 750,
+        "items": ["Alien Artifact", "Translation Matrix", "Star Map"],
+        "experience": 150
+    }
+} 

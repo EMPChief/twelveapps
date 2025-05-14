@@ -1,0 +1,177 @@
+{
+    "docking_bay": {
+        "description": "You dock at the mining complex's docking bay. Automated defense turrets track your movement.",
+        "choices": {
+            "1": {
+                "text": "Try to hack defense systems",
+                "requires_item": "Hacking Tool",
+                "success_rate": 0.7,
+                "success": {
+                    "text": "Defense systems disabled!",
+                    "leads_to": "processing_center"
+                },
+                "failure": {
+                    "text": "Hack failed! Turrets activated!",
+                    "damage": 30,
+                    "leads_to": "emergency_cover"
+                }
+            },
+            "2": {
+                "text": "Look for maintenance access",
+                "leads_to": "maintenance_tunnel"
+            },
+            "3": {
+                "text": "Analyze defense patterns",
+                "reveals": "The turrets seem to have a 3-second targeting delay.",
+                "leads_to": "docking_bay_tactical"
+            }
+        }
+    },
+    "emergency_cover": {
+        "description": "You dive behind some cargo containers as laser fire fills the air.",
+        "choices": {
+            "1": {
+                "text": "Make a run for maintenance access",
+                "success_rate": 0.5,
+                "success": "maintenance_tunnel",
+                "failure": {
+                    "text": "Hit by laser fire!",
+                    "damage": 20,
+                    "leads_to": "maintenance_tunnel"
+                }
+            },
+            "2": {
+                "text": "Use emergency shield (requires Shield Generator)",
+                "requires_item": "Shield Generator",
+                "leads_to": "maintenance_tunnel"
+            }
+        }
+    },
+    "maintenance_tunnel": {
+        "description": "A narrow service tunnel leads deeper into the complex. The air is thick with mineral dust.",
+        "choices": {
+            "1": {
+                "text": "Proceed carefully",
+                "leads_to": "processing_center"
+            },
+            "2": {
+                "text": "Search for maintenance supplies",
+                "loot": ["Health Pack", "Mining Laser"],
+                "leads_to": "processing_center"
+            }
+        }
+    },
+    "processing_center": {
+        "description": "The main ore processing center. Automated machinery still hums with power.",
+        "choices": {
+            "1": {
+                "text": "Access control terminal",
+                "leads_to": "control_room"
+            },
+            "2": {
+                "text": "Investigate strange readings",
+                "leads_to": "anomaly_lab"
+            },
+            "3": {
+                "text": "Check storage area",
+                "leads_to": "storage_vault"
+            }
+        }
+    },
+    "control_room": {
+        "description": "The mining operation's control center. Multiple systems require authorization.",
+        "choices": {
+            "1": {
+                "text": "Use access codes",
+                "requires_item": "Access Codes",
+                "success": "mission_complete",
+                "failure": "lockdown"
+            },
+            "2": {
+                "text": "Search for access codes",
+                "leads_to": "storage_vault"
+            },
+            "3": {
+                "text": "Attempt manual override",
+                "success_rate": 0.4,
+                "success": "mission_complete",
+                "failure": "lockdown"
+            }
+        }
+    },
+    "anomaly_lab": {
+        "description": "A research lab studying mineral anomalies. Equipment still running.",
+        "choices": {
+            "1": {
+                "text": "Examine research data",
+                "reveals": "The minerals have unusual quantum properties.",
+                "loot": ["Research Notes"],
+                "leads_to": "processing_center"
+            },
+            "2": {
+                "text": "Test anomalous sample",
+                "success_rate": 0.6,
+                "success": {
+                    "text": "Discovery! Quantum-aligned minerals found!",
+                    "bonus_xp": 30,
+                    "leads_to": "processing_center"
+                },
+                "failure": {
+                    "text": "Sample destabilized!",
+                    "damage": 25,
+                    "leads_to": "processing_center"
+                }
+            }
+        }
+    },
+    "storage_vault": {
+        "description": "The main storage vault. Valuable minerals and equipment stored here.",
+        "choices": {
+            "1": {
+                "text": "Search for access codes",
+                "loot": ["Access Codes", "Rare Minerals"],
+                "leads_to": "processing_center"
+            },
+            "2": {
+                "text": "Attempt to breach vault",
+                "success_rate": 0.3,
+                "success": {
+                    "text": "Vault breached successfully!",
+                    "loot": ["Rare Minerals", "Shield Generator"],
+                    "leads_to": "processing_center"
+                },
+                "failure": {
+                    "text": "Security system activated!",
+                    "damage": 35,
+                    "leads_to": "lockdown"
+                }
+            }
+        }
+    },
+    "lockdown": {
+        "description": "Security lockdown initiated! All systems locked!",
+        "choices": {
+            "1": {
+                "text": "Override security (requires Hacking Tool)",
+                "requires_item": "Hacking Tool",
+                "success_rate": 0.5,
+                "success": "mission_complete",
+                "failure": "mission_failed"
+            },
+            "2": {
+                "text": "Emergency evacuation",
+                "leads_to": "mission_failed"
+            }
+        }
+    },
+    "mission_complete": {
+        "description": "You've successfully secured the mining complex and its valuable resources!",
+        "final_scene": true,
+        "success": true
+    },
+    "mission_failed": {
+        "description": "Mission failed. Initiating emergency protocols.",
+        "final_scene": true,
+        "success": false
+    }
+} 
