@@ -20,5 +20,5 @@ TAVERN_POISON_DAMAGE = 5
 TAVERN_POISON_DURATION = 3
 
 # Game settings
-DEV_MODE = True  # Set to False for production
+DEV_MODE = False  # Set to False for production
 TYPEWRITER_DELAY = 0.05 
