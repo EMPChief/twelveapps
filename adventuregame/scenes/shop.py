@@ -2,15 +2,26 @@ from utils.printing import typewriter_print, clear_screen
 from router import go_to_town, register_shop_function
 from player import player, health_gold_name
 import time
-
+import random
 
 def shop():
-    shop_items = {
-        "1": {"name": "Health Potion", "inventory": 71, "price": 10},
-        "2": {"name": "Gold Bar", "inventory": 82, "price": 100},
-        "3": {"name": "Space Suit", "inventory": 92, "price": 50},
-        "4": {"name": "Fuel", "inventory": 107, "price": 5},
-    }
+    item_names = [
+        "Health Potion", "Gold Bar", "Space Suit", "Fuel", "Laser Gun",
+        "Teleportation Device", "Shield Generator", "Energy Drink", "Stamina Pills",
+        "Jetpack", "Anti-Gravity Boots", "Space Helmet", "Quantum Chip", "Warp Drive",
+        "Star Map", "Moon Rock", "Plasma Rifle", "Energy Shield", "Rocket Fuel",
+        "Ion Blaster", "Exosuit Upgrade"
+    ]
+    shop_items = {}
+    for i in range(1, 15):
+        name = random.choice(item_names)
+        price = random.randint(5, 150)
+        inventory = random.randint(5, 100)
+        shop_items[str(i)] = {
+            "name": name,
+            "inventory": inventory,
+            "price": price
+        }
 
     while True:
         health_gold_name()
