@@ -1,5 +1,6 @@
 from utils.printing import typewriter_print
 from collections import Counter
+import time
 player = {
     "name": "",
     "health": 100,
@@ -13,6 +14,40 @@ player = {
         "milestones": []
     }
 }
+
+
+def player_heal(amount):
+    """Heal the player by a certain amount"""
+    player["health"] += amount
+    if player["health"] > 100:
+        player["health"] = 100
+    return player["health"]
+
+
+def player_damage(amount):
+    """Damage the player by a certain amount"""
+    player["health"] -= amount
+    if player["health"] < 0:
+        player["health"] = 0
+    return player["health"]
+
+
+def poison_damage(amount, duration):
+    """Damage the player over time with minimal spam"""
+    for second in range(duration):
+        player["health"] -= amount
+        if player["health"] < 0:
+            player["health"] = 0
+        print(
+            f"Poison damage... {amount} taken ({second + 1}/{duration}) | Health: {player['health']}", end='\r')
+        time.sleep(1)
+        if player["health"] <= 0:
+            print()
+            typewriter_print("You died from poison!")
+            return False
+    print()
+    typewriter_print(f"You survived the poison. Health: {player['health']}")
+    return True
 
 
 def set_player_name(name):

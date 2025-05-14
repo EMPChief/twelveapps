@@ -6,6 +6,7 @@ import time
 from router import go_to_town
 import scenes.town
 import scenes.shop
+import scenes.tavern
 
 def main():
     typewriter_print("Welcome to the Space Adventure Game!")
