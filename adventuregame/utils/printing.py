@@ -11,7 +11,7 @@ def clear_screen():
         os.system('clear')
 
 
-def typewriter_print(text, delay=0.05, force_typewriter=False):
+def typewriter_print(text, delay=0.05, force_typewriter=True):
     """Prints text one letter at a time with a delay unless dev mode is on."""
     dev_mode = True
 
