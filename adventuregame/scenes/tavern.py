@@ -6,25 +6,27 @@ import random
 
 
 def tavern():
-    """The tavern scene where player can rest and eat some funny suspicious stew."""
+    """The tavern scene where players can enjoy questionable hospitality and regret their choices."""
     typewriter_print(
-        "You enter the tavern. It's... cozy? Or is that just the smell?")
-    typewriter_print("1. Rest   - Get some sleep and heal.")
+        "You stumble into the tavern. Ah yes, nothing like the warm embrace of stale beer and desperation.")
+    typewriter_print("1. Rest   - Pretend sleeping here is remotely safe.")
     typewriter_print(
-        "2. Eat    - Try the suspicious stew. (Warning: may cause side effects.)")
-    typewriter_print("3. Leave  - Get out while you can.")
+        "2. Eat    - Sample the local stew. It's... legendary. For all the wrong reasons.")
+    typewriter_print("3. Leave  - Run before your life choices get worse.")
 
     while True:
         choice = input("What would you like to do? (1/2/3): ")
 
         if choice == '1':
-            typewriter_print("You take a nap. Sweet dreams!")
+            typewriter_print(
+                "You collapse onto something vaguely resembling a bed. Comfy-ish.")
             time.sleep(1)
             clear_screen()
             player_heal(20)
             health_gold_name()
 
-            typewriter_print("You feel refreshed! Health restored.")
+            typewriter_print(
+                "Miraculously, you wake up with fewer bruises. Health restored!")
             time.sleep(1)
             clear_screen()
             go_to_town()
@@ -32,7 +34,7 @@ def tavern():
 
         elif choice == '2':
             typewriter_print(
-                "You eat the suspicious stew. It tastes... interesting.")
+                "You bravely (or foolishly) dig into the stew. It’s... a culinary mystery.")
             effect = random.choice(["poison", "damage", "heal", "nothing"])
             time.sleep(1)
             clear_screen()
@@ -41,31 +43,33 @@ def tavern():
                 survived = poison_damage(5, 3)
                 if survived:
                     typewriter_print(
-                        "That stew was laced with something! You barely survived.")
+                        "Surprise! The stew was spiked. You live—somehow.")
             elif effect == "damage":
                 player_damage(5)
                 typewriter_print(
-                    "Your stomach churns... That stew did **not** sit well.")
+                    "The stew hits back. Your insides protest violently.")
             elif effect == "heal":
                 player_heal(10)
                 typewriter_print(
-                    "Weirdly, you feel energized! Maybe that stew wasn’t so bad after all.")
+                    "Shockingly, you feel great. Maybe it *wasn't* made of swamp water.")
             else:
-                typewriter_print("You wait... but nothing happens. Just gas.")
+                typewriter_print(
+                    "Nothing happens. Just your dignity slowly slipping away.")
 
             health_gold_name()
             time.sleep(2)
             clear_screen()
 
         elif choice == '3':
-            typewriter_print("You wisely decide to leave the tavern.")
+            typewriter_print(
+                "You leave the tavern, your sanity barely intact. Smart move.")
             time.sleep(1)
             clear_screen()
             go_to_town()
             break
 
         else:
-            typewriter_print("Please choose 1, 2, or 3.")
+            typewriter_print("It's not rocket science. Pick 1, 2, or 3.")
 
 
 register_tavern_function(tavern)
