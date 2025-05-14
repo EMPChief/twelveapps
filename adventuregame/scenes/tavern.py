@@ -6,35 +6,53 @@ import random
 
 
 def tavern():
-    """The tavern scene where players can enjoy questionable hospitality and regret their choices."""
+    """The tavern scene where player can rest, eat suspicious stew, or leave."""
+    stew_cost = 10  # Set the cost of the suspicious stew
+
     typewriter_print(
-        "You stumble into the tavern. Ah yes, nothing like the warm embrace of stale beer and desperation.")
-    typewriter_print("1. Rest   - Pretend sleeping here is remotely safe.")
+        "You enter the tavern. It's... cozy? Or is that just the smell?")
+    typewriter_print(f"1. Rest   - Get some sleep and heal (50 gold).")
     typewriter_print(
-        "2. Eat    - Sample the local stew. It's... legendary. For all the wrong reasons.")
-    typewriter_print("3. Leave  - Run before your life choices get worse.")
+        f"2. Eat    - Try the suspicious stew (Cost: {stew_cost} gold).")
+    typewriter_print("3. Leave  - Get out while you can.")
 
     while True:
         choice = input("What would you like to do? (1/2/3): ")
 
         if choice == '1':
+            if player["gold"] < 50:
+                typewriter_print(
+                    "You don't have enough gold to rest. Maybe you should've saved some?")
+                time.sleep(1)
+                clear_screen()
+                continue
+
             typewriter_print(
-                "You collapse onto something vaguely resembling a bed. Comfy-ish.")
+                "You decide to take a nap. Sweet dreams, but it’s gonna cost you.")
             time.sleep(1)
             clear_screen()
+
+            player["gold"] -= 50
             player_heal(20)
             health_gold_name()
 
-            typewriter_print(
-                "Miraculously, you wake up with fewer bruises. Health restored!")
+            typewriter_print("You feel refreshed! Health restored.")
             time.sleep(1)
             clear_screen()
             go_to_town()
             break
 
         elif choice == '2':
+            if player["gold"] < stew_cost:
+                typewriter_print(
+                    "You don't have enough gold to try the suspicious stew. Maybe you should try again later?")
+                time.sleep(1)
+                clear_screen()
+                continue
+
             typewriter_print(
-                "You bravely (or foolishly) dig into the stew. It’s... a culinary mystery.")
+                "You eat the suspicious stew. It tastes... interesting.")
+            player["gold"] -= stew_cost
             effect = random.choice(["poison", "damage", "heal", "nothing"])
             time.sleep(1)
             clear_screen()
@@ -43,33 +61,31 @@ def tavern():
                 survived = poison_damage(5, 3)
                 if survived:
                     typewriter_print(
-                        "Surprise! The stew was spiked. You live—somehow.")
+                        "That stew was laced with something! You barely survived.")
             elif effect == "damage":
                 player_damage(5)
                 typewriter_print(
-                    "The stew hits back. Your insides protest violently.")
+                    "Your stomach churns... That stew did **not** sit well.")
             elif effect == "heal":
                 player_heal(10)
                 typewriter_print(
-                    "Shockingly, you feel great. Maybe it *wasn't* made of swamp water.")
+                    "Weirdly, you feel energized! Maybe that stew wasn’t so bad after all.")
             else:
-                typewriter_print(
-                    "Nothing happens. Just your dignity slowly slipping away.")
+                typewriter_print("You wait... but nothing happens. Just gas.")
 
             health_gold_name()
             time.sleep(2)
             clear_screen()
 
         elif choice == '3':
-            typewriter_print(
-                "You leave the tavern, your sanity barely intact. Smart move.")
+            typewriter_print("You wisely decide to leave the tavern.")
             time.sleep(1)
             clear_screen()
             go_to_town()
             break
 
         else:
-            typewriter_print("It's not rocket science. Pick 1, 2, or 3.")
+            typewriter_print("Please choose 1, 2, or 3.")
 
 
 register_tavern_function(tavern)
