@@ -167,7 +167,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - GitHub Issues: For bugs and features
 - Discussions: For questions and ideas
-- Email: your.email@example.com
+- Email: bjornmagnekristensen1999@gmail.com
 
 ---
-Made with ❤️ by [Your Name/Team] 
+Made with ❤️ by Bjørn-Magne
